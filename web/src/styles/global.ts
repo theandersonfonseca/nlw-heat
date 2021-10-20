@@ -1,6 +1,9 @@
-import { createGlobalStyle } from 'styled-components/macro';
+import { createGlobalStyle, css } from 'styled-components/macro';
+import theme from './theme';
 
-const GlobalStyles = createGlobalStyle`
+type ThemeType = typeof theme;
+
+const GlobalStyles = createGlobalStyle<{ theme: ThemeType }>`
   * {
     margin: 0;
     padding: 0;
@@ -14,15 +17,20 @@ const GlobalStyles = createGlobalStyle`
     }
   }
 
-  html {
-    font-size: 62.5%;
-  }
+  ${({ theme }) => css`
+    html {
+      font-size: 62.5%;
+    }
 
-  body {
-    font-size: 1.6rem;
-    font-family: 'Roboto', sans-serif;
-    background: #121214;
-  }
+    body {
+      font-size: 1.6rem;
+      font-family: 'Roboto', sans-serif;
+      background: ${theme.colors.secondaryBlack};
+      color: ${theme.colors.tertiaryGray};
+    }
+  `}
+
+
 `;
 
 export default GlobalStyles;

@@ -2,6 +2,7 @@ import { FormEvent, useState } from 'react';
 import { VscGithubInverted, VscSignOut } from 'react-icons/vsc';
 import { useAuth } from '../../hooks/useAuth';
 import { api } from '../../services/api';
+import toast from 'react-hot-toast';
 
 import * as S from './styles';
 
@@ -26,6 +27,7 @@ export function SendMessageForm() {
       });
 
       setMessage('');
+      toast.success('Mensagem enviada');
     } finally {
       setIsSendingMessage(false);
     }

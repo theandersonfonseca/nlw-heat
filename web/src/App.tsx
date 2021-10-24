@@ -9,6 +9,8 @@ import { SendMessageForm } from './components/SendMessageForm';
 
 import { useAuth } from './hooks/useAuth';
 
+import { Toaster } from 'react-hot-toast';
+
 function App() {
   const { user } = useAuth();
 
@@ -19,6 +21,7 @@ function App() {
         {!!user ? <SendMessageForm /> : <LoginBox />}
       </Container>
       <GlobalStyles />
+      <Toaster />
     </ThemeProvider>
   );
 }
